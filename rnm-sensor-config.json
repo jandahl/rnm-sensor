@@ -1,8 +1,8 @@
 {
   "config_file_source": [
     {
-      "source": "https://user:pass@hostname.tld/rnm/rnm-sensor-config.json",
-      "use_remote_config": false
+      "source": "https://raw.githubusercontent.com/jandahl/rnm-sensor/master/rnm-sensor-config.json",
+      "use_remote_config": true
     }
   ],
   "logging": {
