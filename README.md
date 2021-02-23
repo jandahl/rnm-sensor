@@ -34,7 +34,7 @@ You can either download our pre-build image and write it to your SD card, or you
 
 ```
 cd /opt
-sudo git clone https://github.com/banananananananana/rnm-sensor.git
+sudo git clone git@github.com:jandahl/rnm-sensor.git
 cd rnm-sensor
 sudo ./install.sh
 ```
