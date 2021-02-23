@@ -1,47 +1,112 @@
 {
-    "config_file_source": [
-        {
-            "source": "https://user:pass@hostname.tld/rnm/rnm-sensor-config.json",
-            "use_remote_config": false
-        }
-    ],
-    "logging": {
-        "path": "/var/log/rnm-sensor/",
-        "probes": {
-            "curl": "curl.log",
-            "dig": "dig.log",
-            "ping": "ping.log",
-            "tracepath": "tracepath.log",
-            "traceroute": "traceroute.log"
-        },
-        "sensor": "rnm-sensor"
+  "config_file_source": [
+    {
+      "source": "https://user:pass@hostname.tld/rnm/rnm-sensor-config.json",
+      "use_remote_config": false
+    }
+  ],
+  "logging": {
+    "path": "/var/log/rnm-sensor/",
+    "probes": {
+      "curl": "curl.log",
+      "dig": "dig.log",
+      "ping": "ping.log",
+      "tracepath": "tracepath.log",
+      "traceroute": "traceroute.log"
     },
-    "targets": [
-        {
-            "description": "cloudflare",
-            "ip": "1.1.1.1",
-            "nameserver": "dig -t A cloudflare.com @1.1.1.1",
-            "probes": [
-                "all"
-            ],
-            "url": "https://www.cloudflare.com"
-        },
-        {
-            "description": "google",
-            "ip": "8.8.8.8",
-            "nameserver": "dig -t A google.com @8.8.8.8",
-            "probes": [
-                "ping",
-                "curl"
-            ],
-            "url": "https://www.google.com"
-        },
-        {
-            "description": "quad9",
-            "ip": "9.9.9.9",
-            "probes": [
-                "ping"
-            ]
-        }
-    ]
+    "sensor": "rnm-sensor"
+  },
+  "targets": [
+    {
+      "description": "DATA1-BG01-Outside-interface",
+      "ip": "188.180.93.58",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA1-TDC-CPE-BGP-Net",
+      "ip": "188.180.93.57",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA1-TDC-CPE-Legacy-net",
+      "ip": "194.239.25.1",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA1-BG01-Lo0",
+      "ip": "185.27.0.1",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA1-BG01-1033",
+      "ip": "185.27.0.50",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA1-BG01-1034",
+      "ip": "185.27.0.66",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA1-BG01-1035",
+      "ip": "185.27.0.106",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA3-BG01-Outside-interface",
+      "ip": "195.215.238.134",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA3-TDC-CPE-BGP-Net",
+      "ip": "195.215.238.133",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA3-BG01-Lo0",
+      "ip": "185.27.0.129",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA3-BG01-1033",
+      "ip": "185.27.0.51",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA3-BG01-1034",
+      "ip": "185.27.0.67",
+      "probes": [
+        "ping"
+      ]
+    },
+    {
+      "description": "DATA3-BG01-1035",
+      "ip": "185.27.0.107",
+      "probes": [
+        "ping"
+      ]
+    }
+  ]
 }
