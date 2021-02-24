@@ -65,5 +65,4 @@ systemctl enable rnm-sensor
 systemctl start rnm-sensor
 
 # Echo ending
-echo ""
-echo "ALL DONE - please reboot"
+printf "\n\n\tALL DONE - please reboot\n"
