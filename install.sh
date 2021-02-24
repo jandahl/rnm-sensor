@@ -2,8 +2,12 @@
 
 # Check if script is run as root
 if [ "$(id -u)" != 0 ]; then
-  echo "Please run as root"
-  exit 1
+	echo "Please run as root"
+	exit 1
+fi
+
+if [ "$(lsb_release --id | cut --fields=2)" != "Ubuntu" ]; then
+	printf "\n\tWarning! This seems to be a non-Ubuntu system.\n\tIt might just work anyway but it hasn't been tested.\n\n\tCAVEAT EMPTOR!\n\n"
 fi
 
 # Start by updating ubuntu to the latest and greatest
@@ -12,9 +16,9 @@ apt dist-upgrade -y
 
 # Add logging directories to tmpfs to minimize sd card io
 {
-  echo "tmpfs /tmp      tmpfs nosuid,nodev  0 0"
-  echo "tmpfs /var/log  tmpfs nosuid,nodev  0 0"
-  echo "tmpfs /var/tmp  tmpfs nosuid,nodev  0 0"
+	echo "tmpfs /tmp      tmpfs nosuid,nodev  0 0"
+	echo "tmpfs /var/log  tmpfs nosuid,nodev  0 0"
+	echo "tmpfs /var/tmp  tmpfs nosuid,nodev  0 0"
 } >>/etc/fstab
 
 # Install package dependencies
