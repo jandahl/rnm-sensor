@@ -21,23 +21,30 @@ apt dist-upgrade -y
 	echo "tmpfs /var/tmp  tmpfs nosuid,nodev  0 0"
 } >>/etc/fstab
 
+### System deps
 # Install package dependencies
 apt install -y libssl-dev autoconf libtool make unzip python3-pip net-tools apt-transport-https traceroute
 pip3 install jc multiprocessing-logging requests
 
-# Upgrade curl to a version that supports "json" write-out
+### cURL
+# Basically anything past 7.70 should be fine
+cURLversion="7.75.0"
+
 apt purge curl -y
-cd /usr/local/src || exit 2
+cd /usr/local/src || echo "Something went wrong just prior to fetching the cURL package!"
+exit 2
 
-wget https://curl.haxx.se/download/curl-7.72.0.zip
-unzip curl-7.72.0.zip
+wget https://curl.haxx.se/download/curl-${cURLversion}.zip
+unzip curl-${cURLversion}.zip
 
-cd curl-7.72.0 || exit 2
+cd curl-${cURLversion} || echo "Something went wrong with installation of the cURL package!"
+exit 2
 
 ./buildconf && ./configure --with-ssl
 make && make install
 ln -s /usr/local/bin/curl /usr/bin/curl
 
+### Filebeat
 # Install filebeat and copy template config
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-7.x.list
