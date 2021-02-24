@@ -21,7 +21,7 @@ apt dist-upgrade -y
 	echo "tmpfs /var/tmp  tmpfs nosuid,nodev  0 0"
 } >>/etc/fstab
 
-### System deps
+### Package installs
 # Install package dependencies
 apt install -y libssl-dev autoconf libtool make unzip python3-pip net-tools apt-transport-https traceroute
 pip3 install jc multiprocessing-logging requests
@@ -52,6 +52,7 @@ apt update && apt install -y filebeat
 cp /opt/rnm-sensor/filebeat/filebeat-template.yml /etc/filebeat/filebeat.yml
 systemctl enable filebeat
 
+### System maintenance
 # Set permissions
 chown ubuntu:ubuntu -R /opt/rnm-sensor/
 chmod +x /opt/rnm-sensor/rnm_sensor.py
@@ -59,7 +60,7 @@ chmod +x /opt/rnm-sensor/rnm_sensor.py
 # Add systemd service
 cp /opt/rnm-sensor/rnm-sensor.service /etc/systemd/system/rnm-sensor.service
 
-# Enable RNM-sensor service
+# Enable RNM-sensor service (that's me!)
 systemctl enable rnm-sensor
 systemctl start rnm-sensor
 
